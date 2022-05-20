@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam System</title>
+    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <section class = "header">
+        <nav>
+            <div class="nav-links" id = "navLinks">
+                <ul class="menu">
+                    <li><a href = "home.html">HOME</a></li>
+                    <li><a href = "">ABOUT</a></li> 
+                    <li><a href = "">CONTACT</a></li>
+                    <li><a href = "">REGISTRATION</a></li>
+                    <li><a href = "">LOGIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <div class="text-box">
+
+            <div class="contain">
+                <!--for time-->
+                <span class = "hms"></span> 
+                <!--for AM/PM-->
+                <span class = "ampm"></span> 
+                <br>
+                <!--for date-->
+                <span class = "date"></span>           
+            </div>
+
+        <!-- </div> -->
+
+        <script>
+            function updateTime(){
+                var dateInfo = new Date();
+
+                    /* time */
+
+                var hr,
+                _min = (dateInfo.getMinutes() <10)? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+                sec = (dateInfo.getSeconds() <10)? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+                ampm = (dateInfo.getHours() >= 12)? "PM" : "AM";
+
+                    // replace 0 with 12 at midnight, subject 12 form hour if 13-23
+
+                if(dateInfo.getHours() == 0){
+                    hr = 12;
+                }
+                else if(dateInfo.getHours() > 12){
+                    hr = dateInfo.getHours() - 12;
+                }
+                else{
+                    hr = dateInfo.getHours();
+                }
+
+                    //current time
+
+                var currentTime = hr + ":" + _min + ":" + sec;
+
+                    //print time
+
+                document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+                document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+
+                    //date
+
+                var dow =["Saturday","Sunday","Monday","Tuesday","Wednesday","Thurseday","Friday"],
+                    month =["January","February","March","April","May","June","July","Augest","September",
+                             "October","November","December"],
+                    day = dateInfo.getDate();
+
+                    //store data
+    
+                var currentDate = dow[dateInfo.getDay()] +", " +month[dateInfo.getMonth()] +""+ day;
+
+                document.getElementsByClassName("date")[0].innerHTML = currentDate;
+
+            };
+
+                //print time and date once, then update them every second
+                
+            updateTime();
+            setInterval(function(){
+                updateTime()
+            },1000);
+
+        </script>  
+
+        <div class="homeindex">
+        
+            <h1>Online Exam</h1>
+
+            <br> <br>
+
+            <h3>On General Knowledge</h3> <br>
+
+            <p> 
+                General knowledge is information that has been accumulated over <br>
+                time through various mediums, sources. It excludes specialized <br>
+                learning that can only be obtained with extensive training and <br>
+                information confined to a single medium. General knowledge is <br>
+                an essential component of crystallized intelligence.   
+            </p> 
+                
+            <br> <br> <br>
+
+            <p class="btn">
+
+                <input type="submit" id="sub-btn" name="submit-button" value="Get Started">
+    
+            </p>
+
+        </div>
+
+       
+
+    </div>
+    </section>
+    <!-------footer ------>
+
+
+    <section class="footer">
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <div>
+            <p>Copyright © Mahisa Maliha 2022</p>
+        </div>
+     </section>
+    
+</body>
+</html>
